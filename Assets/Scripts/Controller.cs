@@ -91,7 +91,7 @@ public class Controller : MonoBehaviour
             hit = collision.contacts[0].normal;
             Debug.Log(hit);
             float angle = Vector3.Angle(hit, Vector3.up);
-
+            //With the style of collision triggers are this style of collision detection is currently unnecessary.
             if (Mathf.Approximately(angle, 0))
             {
                 //Down
