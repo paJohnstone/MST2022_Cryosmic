@@ -38,7 +38,7 @@ public class Controller : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && hitStun == false)
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !hitStun)
         {
             playerR.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             isOnGround = false;
@@ -46,13 +46,13 @@ public class Controller : MonoBehaviour
 
         }
 
-        if (hitStun == false && right)
+        if (!hitStun && right)
         {
             horizontalInput = Input.GetAxis("Horizontal");
             playerR.transform.Translate(Vector2.right * speed * horizontalInput);
         }
 
-        else if (hitStun == false && left)
+        else if (!hitStun && left)
         {
             horizontalInput = Input.GetAxis("Horizontal");
             playerR.transform.Translate(Vector2.left * speed * horizontalInput);
@@ -60,13 +60,13 @@ public class Controller : MonoBehaviour
     }
     void constraints()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && hitStun == false)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !hitStun)
         {
             transform.eulerAngles = new Vector2(0, 180);
             left = true;
             right = false;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow) && hitStun == false)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !hitStun)
         {
             transform.eulerAngles = new Vector2(0, 0);
             left = false;
