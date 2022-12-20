@@ -16,6 +16,10 @@ public class Controller : MonoBehaviour
     private float horizontalInput;
     public float speed = 0.008f;
     public Vector3 hit;
+    [SerializeField]
+    private float tempY;
+    private GameObject semiPlat;
+    private float semiWait;
 
 
 
@@ -73,20 +77,18 @@ public class Controller : MonoBehaviour
             right = true;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.transform.position.y + collision.gameObject.transform.lossyScale.y/2 <= playerR.position.y - playerR.transform.lossyScale.y/2)
         {
-            isOnGround = true;
-
+                isOnGround = true;
 
         }
 
 
 
 
-
-        if (collision.gameObject.tag.Equals("Danger"))
+            if (collision.gameObject.tag.Equals("Danger"))
         {
             hit = collision.contacts[0].normal;
             Debug.Log(hit);
