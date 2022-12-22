@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+<<<<<<< HEAD
   - Whirlwind
+=======
+  - Semisolid Platform
+>>>>>>> d5fd739fe4cf2caddbcbe83901c0b2046abb9fc8
   layers:
   - Default
   - TransparentFX
@@ -13,9 +17,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Semisolid
+  - Player
+  - Player(Infront)
   - 
   - 
   - 
