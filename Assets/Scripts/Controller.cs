@@ -73,7 +73,7 @@ public class Controller : MonoBehaviour
             right = true;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -118,6 +118,16 @@ public class Controller : MonoBehaviour
         }
 
 
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = false;
+
+
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
