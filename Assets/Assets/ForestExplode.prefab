@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc426943b018884d924de83d97f42ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 0
-  right: 1
+  left: 1
+  right: 0
   timer: 0
   explode: {fileID: 284675049486715449}
