@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-  tags:
-  - Ground
-  - Spawner1
-  - Spawner2
-  - Spawner3
-  - Spawner4
-=======
   tags: []
->>>>>>> 4854a0a818b4451470b1426e2be4306863081362
   layers:
   - Default
   - TransparentFX

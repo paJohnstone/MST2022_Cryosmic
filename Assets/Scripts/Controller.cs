@@ -17,6 +17,7 @@ public class Controller : MonoBehaviour
     private bool left;
     private float horizontalInput;
     public float speed = 0.008f;
+    private float semiWait;
     public Vector3 hit;
 
 
@@ -76,15 +77,18 @@ public class Controller : MonoBehaviour
             right = true;
         }
     }
+     
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
 
-
         }
 
+
+        
+        
 
 
 
