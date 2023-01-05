@@ -23,8 +23,8 @@ public class HealthBar : MonoBehaviour
         healthGreen.transform.localScale = new Vector3(percent, healthGreen.transform.localScale.y, healthGreen.transform.localScale.z);
         
     }
-    //make sure to put this in your mcfucking script using "public HealthBar healthScript;" or something like that and selecting the healthbar. ask me to figure out how to use multiple later lkmaoooo
-    //use the commented code below to do the funny on every collision with hitboxes, just you know, make sure it has the correct tag
+    //make sure to put this in your script using "public HealthBar healthScript;" or something like that and selecting the healthbar. ask me to figure out how to use multiple later
+    //use the commented code below to deal damage with your hitboxes (i hope), just you know, make sure it has the correct tag
     //private void OnCollisionEnter2D(Collision2D collision)
     //{
         //healthScript = collision.gameObject.GetComponent<HealthBar>();
