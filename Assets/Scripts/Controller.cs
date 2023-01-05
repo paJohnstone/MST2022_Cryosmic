@@ -5,21 +5,19 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public Rigidbody2D playerR;
+    public GameObject meleeSpawner;
     public bool isOnGround = true;
     public bool hitStun = false;
     //private bool freeze = false;
     public float knockbackStrength = 8f;
     public float jumpForce = 12.0f;
     public float hitStunTime = 0;
+    public bool meleeActive;
     private bool right;
     private bool left;
     private float horizontalInput;
     public float speed = 0.008f;
     public Vector3 hit;
-    [SerializeField]
-    private float tempY;
-    private GameObject semiPlat;
-    private float semiWait;
 
 
 
@@ -38,11 +36,12 @@ public class Controller : MonoBehaviour
         Movement();
         constraints();
         hitSTUN();
+        meleeActive = meleeSpawner.GetComponent<ForestMelee>().activeMelee;
     }
 
     void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !hitStun)
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && hitStun == false)
         {
             playerR.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             isOnGround = false;
@@ -50,13 +49,13 @@ public class Controller : MonoBehaviour
 
         }
 
-        if (!hitStun && right)
+        if (hitStun == false && right)
         {
             horizontalInput = Input.GetAxis("Horizontal");
             playerR.transform.Translate(Vector2.right * speed * horizontalInput);
         }
 
-        else if (!hitStun && left)
+        else if (hitStun == false && left)
         {
             horizontalInput = Input.GetAxis("Horizontal");
             playerR.transform.Translate(Vector2.left * speed * horizontalInput);
@@ -64,36 +63,38 @@ public class Controller : MonoBehaviour
     }
     void constraints()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && !hitStun)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && hitStun == false && meleeActive == false)
         {
             transform.eulerAngles = new Vector2(0, 180);
             left = true;
             right = false;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !hitStun)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && hitStun == false && meleeActive == false)
         {
             transform.eulerAngles = new Vector2(0, 0);
             left = false;
             right = true;
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.transform.position.y + collision.gameObject.transform.lossyScale.y/2 <= playerR.position.y - playerR.transform.lossyScale.y/2)
+        if (collision.gameObject.CompareTag("Ground"))
         {
-                isOnGround = true;
+            isOnGround = true;
+
 
         }
 
 
 
 
-            if (collision.gameObject.tag.Equals("Danger"))
+
+        if (collision.gameObject.tag.Equals("Danger"))
         {
             hit = collision.contacts[0].normal;
             Debug.Log(hit);
             float angle = Vector3.Angle(hit, Vector3.up);
-            //With the style of collision triggers are this style of collision detection is currently unnecessary.
+
             if (Mathf.Approximately(angle, 0))
             {
                 //Down
@@ -120,16 +121,6 @@ public class Controller : MonoBehaviour
         }
 
 
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isOnGround = false;
-
-
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
