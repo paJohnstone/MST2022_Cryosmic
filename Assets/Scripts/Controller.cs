@@ -18,8 +18,17 @@ public class Controller : MonoBehaviour
     private float horizontalInput;
     public float speed = 0.008f;
     private float semiWait;
+    private bool isInvincible;
     public Vector3 hit;
 
+    [SerializeField]
+    private float invincibilityDurationSeconds;
+
+    [SerializeField]
+    private float invincibilityDeltaTime;
+
+    [SerializeField]
+    private GameObject model;
 
 
     // Start is called before the first frame update
@@ -93,7 +102,7 @@ public class Controller : MonoBehaviour
 
 
 
-        if (collision.gameObject.tag.Equals("Danger"))
+        if (collision.gameObject.tag.Equals("Danger") && isInvincible == false)
         {
             hit = collision.contacts[0].normal;
             Debug.Log(hit);
@@ -131,17 +140,18 @@ public class Controller : MonoBehaviour
     {
         Vector3 toTarget = (collision.gameObject.transform.position - transform.position).normalized;
 
-        if (Vector3.Dot(toTarget, gameObject.transform.forward) > 0)
+        if (Vector3.Dot(toTarget, gameObject.transform.forward) > 0 && isInvincible == false)
         {
             hit = new Vector3(1, 0.25f, 0);
             //Debug.Log("from front");
         }
         else
         {
-            hit = new Vector3(-1, 0, 0);
+            hit = new Vector3(-1, 0.25f, 0);
             //Debug.Log("from back");
         }
 
+        
         //if (collision.gameObject.tag.Equals("Danger"))
         //{
         //    //hit = collision.GetContacts[0].normal;
@@ -174,68 +184,71 @@ public class Controller : MonoBehaviour
         //}
 
 
-
-        if (collision.gameObject.CompareTag("Danger"))
+        
+        if (collision.gameObject.CompareTag("Danger") && isInvincible == false)
         {
             hitStun = true;
-            hitStunTime = 2;
+            hitStunTime = 0.5f;
             //Collider2D enemyRigidbody = collision.gameObject.GetComponent<Collider2D>();
             //Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
             playerR.AddForce(hit * knockbackStrength, ForceMode2D.Impulse);
-
+            if (!isInvincible)
+            {
+                StartCoroutine(BecomeTemporarilyInvincible());
+            }
         }
 
         //Delete Tags correleted with the character using said tags. Forest Being: 1 and 2;   Cowboy: 3 and 4;   Viking: 5 and 6;   Failed Experiment: 7 and 8;
-        //if (collision.gameObject.CompareTag("Danger1"))
+        //if (collision.gameObject.CompareTag("Danger1") && isInvincible == false)
         //{
         //    hitStun = true;
         //    hitStunTime = 2;
         //    playerR.AddForce(hit * knockbackStrength, ForceMode2D.Impulse);
 
         //}
-        //if (collision.gameObject.CompareTag("Danger2"))
+        //if (collision.gameObject.CompareTag("Danger2") && isInvincible == false)
         //{
         //    hitStun = true;
         //    hitStunTime = 2;
         //    playerR.AddForce(hit * knockbackStrength, ForceMode2D.Impulse);
 
         //}
-        //if (collision.gameObject.CompareTag("Danger3"))
+        //if (collision.gameObject.CompareTag("Danger3") && isInvincible == false)
         //{
         //    hitStun = true;
         //    hitStunTime = 2;
         //    playerR.AddForce(hit * knockbackStrength, ForceMode2D.Impulse);
 
         //}
-        //if (collision.gameObject.CompareTag("Danger4"))
+        //if (collision.gameObject.CompareTag("Danger4") && isInvincible == false)
         //{
         //    hitStun = true;
         //    hitStunTime = 2;
         //    playerR.AddForce(hit * knockbackStrength, ForceMode2D.Impulse);
 
         //}
-        //if (collision.gameObject.CompareTag("Danger5"))
+        //if (collision.gameObject.CompareTag("Danger5") && isInvincible == false)
         //{
         //    hitStun = true;
         //    hitStunTime = 2;
         //    playerR.AddForce(hit * knockbackStrength, ForceMode2D.Impulse);
 
         //}
-        //if (collision.gameObject.CompareTag("Danger6"))
+        //if (collision.gameObject.CompareTag("Danger6") && isInvincible == false)
         //{
         //    hitStun = true;
         //    hitStunTime = 2;
         //    playerR.AddForce(hit * knockbackStrength, ForceMode2D.Impulse);
 
         //}
-        //if (collision.gameObject.CompareTag("Danger7"))
+        //if (collision.gameObject.CompareTag("Danger7") && isInvincible == false)
         //{
         //    hitStun = true;
         //    hitStunTime = 2;
         //    playerR.AddForce(hit * knockbackStrength, ForceMode2D.Impulse);
 
         //}
-        //if (collision.gameObject.CompareTag("Danger8"))
+        //if (collision.gameObject.CompareTag("Danger8") && isInvincible == false)
         //{
         //    hitStun = true;
         //    hitStunTime = 2;
@@ -262,5 +275,33 @@ public class Controller : MonoBehaviour
                 hitStun = false;
             }
         }
+    }
+
+    private void ScaleModelTo(Vector3 scale)
+    {
+        model.transform.localScale = scale;
+    }
+    private IEnumerator BecomeTemporarilyInvincible()
+    {
+        Debug.Log("Player turned invincible!");
+        isInvincible = true;
+
+        for (float i = 0; i < invincibilityDurationSeconds; i += invincibilityDeltaTime)
+        {
+            // Alternate between 0 and 1 scale to simulate flashing
+            if (model.transform.localScale == new Vector3(3,3,3))
+            {
+                ScaleModelTo(new Vector3(0,0,0));
+            }
+            else
+            {
+                ScaleModelTo(new Vector3(3,3,3));
+            }
+            yield return new WaitForSeconds(invincibilityDeltaTime);
+        }
+
+        Debug.Log("Player is no longer invincible!");
+        ScaleModelTo(new Vector3(3,3,3));
+        isInvincible = false;
     }
 }

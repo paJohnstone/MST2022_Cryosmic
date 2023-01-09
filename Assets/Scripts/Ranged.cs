@@ -70,6 +70,16 @@ public class Ranged : MonoBehaviour
         }
 
 
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            pooof.GetComponent<ForestExplode>().timer = false;
+            rangedSpawner.GetComponent<ForestRange>().onlyOne = false;
+            Destroy(gameObject);
+            Instantiate(pooof, transform.position, pooof.transform.rotation);
+
+        }
+
     }
+
 
 }
