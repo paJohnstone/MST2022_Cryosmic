@@ -20,6 +20,7 @@ public class Controller : MonoBehaviour
     private float semiWait;
     private bool isInvincible;
     public Vector3 hit;
+    private ForestControl forestControl;
 
     [SerializeField]
     private float invincibilityDurationSeconds;
