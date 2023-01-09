@@ -7,6 +7,7 @@ public class ForestMelee : MonoBehaviour
 
     public GameObject meleePrefab;
     public GameObject forestGet;
+    public GameObject player;
     public float ttime;
     public float speed;
     public bool activeMelee;
@@ -23,7 +24,7 @@ public class ForestMelee : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && player.GetComponent<Controller>().hitStun == false)
         {
             meleePrefab.SetActive(true);
             activeMelee = true;

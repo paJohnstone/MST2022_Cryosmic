@@ -12,6 +12,7 @@ public class ForestRange : MonoBehaviour
     public GameObject meleeSpawner;
     public bool meleeActive;
     public bool onlyOne = false;
+    public GameObject player;
 
 
 
@@ -27,7 +28,7 @@ public class ForestRange : MonoBehaviour
         meleeActive = meleeSpawner.GetComponent<ForestMelee>().activeMelee;
         if (activeRanged == false)
         {
-            if (Input.GetKeyDown(KeyCode.Z) && meleeActive == false && onlyOne == false)
+            if (Input.GetKeyDown(KeyCode.Z) && meleeActive == false && onlyOne == false && player.GetComponent<Controller>().hitStun == false)
             {
                 
                 ttime = 2f;
