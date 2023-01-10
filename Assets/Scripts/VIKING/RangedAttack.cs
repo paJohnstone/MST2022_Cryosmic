@@ -23,13 +23,13 @@ public class RangedAttack : MonoBehaviour
         
         if (right == true)
         {
-            rangedAttack.AddForce(new Vector2(3f, 1.5f) * speed, ForceMode2D.Impulse);
+            rangedAttack.AddForce(new Vector2(2.5f, 1.5f) * speed, ForceMode2D.Impulse);
 
         }
         if (left == true)
         {
             
-            rangedAttack.AddForce(new Vector2(-3f, 1.5f) * speed, ForceMode2D.Impulse);
+            rangedAttack.AddForce(new Vector2(-2.5f, 1.5f) * speed, ForceMode2D.Impulse);
 
         }
     }

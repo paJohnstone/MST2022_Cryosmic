@@ -23,14 +23,14 @@ public class Ranged : MonoBehaviour
         {
             pooof.GetComponent<ForestExplode>().right = true;
             pooof.GetComponent<ForestExplode>().left = false;
-            rangedAttack.AddForce(new Vector2(3f, 2f) * speed, ForceMode2D.Impulse);
+            rangedAttack.AddForce(new Vector2(3.5f, 2f) * speed, ForceMode2D.Impulse);
 
         }
         if (left == true)
         {
             pooof.GetComponent<ForestExplode>().right = false;
             pooof.GetComponent<ForestExplode>().left = true;
-            rangedAttack.AddForce(new Vector2(-3f, 2f) * speed, ForceMode2D.Impulse);
+            rangedAttack.AddForce(new Vector2(-3.5f, 2f) * speed, ForceMode2D.Impulse);
 
         }
     }
