@@ -121,7 +121,7 @@ MonoBehaviour:
   left: 0
   right: 1
   pooof: {fileID: 284675049486715428, guid: 98408c04f69591940b71d8dcdbad163b, type: 3}
-  rangedSpawner: {fileID: 0}
+  rangedSpawner: {fileID: 1797818986399520362, guid: d8bca57bf834e6e4d97691508f908e53, type: 3}
 --- !u!50 &1568326302539009394
 Rigidbody2D:
   serializedVersion: 4
