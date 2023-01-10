@@ -8,6 +8,7 @@ TagManager:
   - Spawner1
   - Danger
   - Spawner2
+  - Spawner3
   layers:
   - Default
   - TransparentFX
