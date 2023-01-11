@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForestMelee : MonoBehaviour
+public class CowboyMelee : MonoBehaviour
 {
 
     public GameObject meleePrefab;
@@ -23,11 +23,11 @@ public class ForestMelee : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Return) && player.GetComponent<Controller>().hitStun == false)
+        if (Input.GetKeyDown(KeyCode.Return) && player.GetComponent<CowboyController>().hitStun == false)
         {
             meleePrefab.SetActive(true);
             activeMelee = true;
-            ttime = 0.3f;
+            ttime = 0.2f;
 
         }
         if (activeMelee == true)
