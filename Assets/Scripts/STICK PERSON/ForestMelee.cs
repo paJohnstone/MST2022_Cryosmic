@@ -6,6 +6,7 @@ public class ForestMelee : MonoBehaviour
 {
 
     public GameObject meleePrefab;
+    public GameObject forestGet;
     public GameObject player;
     public float ttime;
     public float speed;

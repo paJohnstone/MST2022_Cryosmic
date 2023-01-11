@@ -16,7 +16,7 @@ public class Ranged : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rangedSpawner = GameObject.FindWithTag("Spawner1");
         rangedAttack = GetComponent<Rigidbody2D>();
         ttime = 1.6f;
         if (right == true)
