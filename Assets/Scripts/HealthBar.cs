@@ -7,13 +7,14 @@ public class HealthBar : MonoBehaviour
 {
     public float healthMax;
     public float healthCur;
+    private GameObject healthPlayer;
     [SerializeField]
     private GameObject healthGreen;
     private float percent;
     // Start is called before the first frame update
     void Start()
     {
-        healthCur = healthMax;
+        healthCur = healthMax; 
     }
 
     // Update is called once per frame
