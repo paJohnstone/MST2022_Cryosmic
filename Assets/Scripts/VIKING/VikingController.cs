@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class VikingController : MonoBehaviour
 {
@@ -60,7 +61,22 @@ public class VikingController : MonoBehaviour
 
 
         }
-
+        var gamepad = Gamepad.current;
+        Vector2 move = gamepad.leftStick.ReadValue();
+        if (move.x > 0)
+        {
+            right = true;
+            left = false;
+        }
+        else if (move.x < 0)
+        {
+            right = false;
+            left = true;
+        }
+        else if (move.x == 0)
+        {
+            return;
+        }
         if (hitStun == false && right && meleeSmash == false)
         {
             horizontalInput = Input.GetAxis("Horizontal");
@@ -75,17 +91,13 @@ public class VikingController : MonoBehaviour
     }
     void constraints()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && hitStun == false && meleeActive == false && meleeSmash == false)
+        if (left && hitStun == false && meleeActive == false && meleeSmash == false)
         {
             transform.eulerAngles = new Vector2(0, 180);
-            left = true;
-            right = false;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow) && hitStun == false && meleeActive == false && meleeSmash == false)
+        if (right && hitStun == false && meleeActive == false && meleeSmash == false)
         {
             transform.eulerAngles = new Vector2(0, 0);
-            left = false;
-            right = true;
         }
     }
 
