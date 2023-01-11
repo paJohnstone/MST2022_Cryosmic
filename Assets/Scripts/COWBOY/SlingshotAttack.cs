@@ -17,7 +17,7 @@ public class SlingshotAttack : MonoBehaviour
     void Start()
     {
         
-        rangedSpawner = GameObject.FindWithTag("Spawner3");
+        
         rangedSpawner.GetComponent<CowboyRanged>().onlyOne = true;
         rangedAttack = GetComponent<Rigidbody2D>();
         ttime = 1.2f;

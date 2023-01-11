@@ -17,7 +17,6 @@ public class RangedAttack : MonoBehaviour
     void Start()
     {
         spin = false;
-        rangedSpawner = GameObject.FindWithTag("Spawner2");
         rangedAttack = GetComponent<Rigidbody2D>();
         ttime = 1.6f;
         
