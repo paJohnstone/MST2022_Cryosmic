@@ -4350,9 +4350,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6009928341503767701}
   - component: {fileID: 6009928341503767704}
+  - component: {fileID: 6009928341503767705}
   m_Layer: 0
   m_Name: ColliderSpawner
-  m_TagString: Spawner1
+  m_TagString: Spawner2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4391,3 +4392,24 @@ MonoBehaviour:
   activeMelee: 0
   activeMelee2: 0
   smash: 0
+--- !u!114 &6009928341503767705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6009928341503767698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694c636cb83710d4bbe21be80d204ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangedAttack: {fileID: 6116603842522246032, guid: 45f6f70edc82afb41ba147133f85a845, type: 3}
+  ttime: 0
+  rangedPrefab: {fileID: 3635148674086882021, guid: 45f6f70edc82afb41ba147133f85a845, type: 3}
+  activeRanged: 0
+  speed: 2
+  meleeSpawner: {fileID: 6009928341503767698}
+  meleeActive: 0
+  onlyOne: 0
+  player: {fileID: 6009928341242777090}
