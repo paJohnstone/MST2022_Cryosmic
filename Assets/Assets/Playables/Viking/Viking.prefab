@@ -262,10 +262,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9013374813747024249}
   - component: {fileID: 9013374813747024244}
-  - component: {fileID: 9013374813747024245}
   m_Layer: 0
   m_Name: ColliderSpawner
-  m_TagString: Spawner2
+  m_TagString: Spawner1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9013374813747024254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.42, y: 0, z: 0}
+  m_LocalPosition: {x: 1.29, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,27 +303,6 @@ MonoBehaviour:
   activeMelee: 0
   activeMelee2: 0
   smash: 0
---- !u!114 &9013374813747024245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9013374813747024254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 694c636cb83710d4bbe21be80d204ff8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rangedAttack: {fileID: 7312035446245178287, guid: 45f6f70edc82afb41ba147133f85a845, type: 3}
-  ttime: 0
-  rangedPrefab: {fileID: 3635148674086882021, guid: 45f6f70edc82afb41ba147133f85a845, type: 3}
-  activeRanged: 0
-  speed: 2
-  meleeSpawner: {fileID: 9013374813747024254}
-  meleeActive: 0
-  onlyOne: 0
-  player: {fileID: 9013374814025313262}
 --- !u!1 &9013374814025313262
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +316,7 @@ GameObject:
   - component: {fileID: 9013374814025313257}
   - component: {fileID: 9013374814025313252}
   - component: {fileID: 9013374814025313254}
+  - component: {fileID: -168784570146146122}
   m_Layer: 0
   m_Name: Viking
   m_TagString: Player
@@ -353,7 +332,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9013374814025313262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -3.41, z: 0}
+  m_LocalPosition: {x: -13.870001, y: -3.41, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -531,3 +510,33 @@ MonoBehaviour:
   invincibilityDurationSeconds: 1.4
   invincibilityDeltaTime: 0.14
   model: {fileID: 3346875321595581406}
+--- !u!114 &-168784570146146122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013374814025313262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0f7f1fcda48dde24d8acdcb876862fb0, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
