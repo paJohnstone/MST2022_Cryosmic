@@ -62,6 +62,14 @@ public class VikingController : MonoBehaviour
 
 
         }
+        
+        if (gamepad.leftShoulder.wasPressedThisFrame && isOnGround && hitStun == false && meleeSmash == false)
+        {
+            playerR.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            isOnGround = false;
+
+
+        }
         Vector2 move = gamepad.leftStick.ReadValue();
         if (move.x > 0)
         {

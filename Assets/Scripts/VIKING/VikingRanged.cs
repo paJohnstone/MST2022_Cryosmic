@@ -34,7 +34,16 @@ public class VikingRanged : MonoBehaviour
             {
 
                 ttime = 2f;
-                Instantiate(rangedPrefab, transform.position, rangedPrefab.transform.rotation);
+                if(rangedPrefab.GetComponent<RangedAttack>().left == true)
+                {
+                    Instantiate(rangedPrefab, transform.position + new Vector3 (-0.4f, 0), rangedPrefab.transform.rotation);
+                }
+
+                if (rangedPrefab.GetComponent<RangedAttack>().right == true)
+                {
+                    Instantiate(rangedPrefab, transform.position + new Vector3(0.4f, 0), rangedPrefab.transform.rotation);
+                }
+
             }
 
             
