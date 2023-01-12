@@ -54,14 +54,14 @@ public class VikingController : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && hitStun == false && meleeSmash == false)
+        var gamepad = Gamepad.current;
+        if (gamepad.buttonSouth.wasPressedThisFrame && isOnGround && hitStun == false && meleeSmash == false)
         {
             playerR.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             isOnGround = false;
 
 
         }
-        var gamepad = Gamepad.current;
         Vector2 move = gamepad.leftStick.ReadValue();
         if (move.x > 0)
         {
@@ -80,13 +80,13 @@ public class VikingController : MonoBehaviour
         if (hitStun == false && right && meleeSmash == false)
         {
             horizontalInput = Input.GetAxis("Horizontal");
-            playerR.transform.Translate(Vector2.right * speed * horizontalInput);
+            playerR.transform.Translate(Vector2.right * speed * move);
         }
 
         else if (hitStun == false && left && meleeSmash == false)
         {
             horizontalInput = Input.GetAxis("Horizontal");
-            playerR.transform.Translate(Vector2.left * speed * horizontalInput);
+            playerR.transform.Translate(Vector2.left * speed * move);
         }
     }
     void constraints()

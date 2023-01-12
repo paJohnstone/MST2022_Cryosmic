@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class VikingMelee : MonoBehaviour
 {
@@ -23,8 +25,8 @@ public class VikingMelee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Return) && player.GetComponent<VikingController>().hitStun == false)
+        var gamepad = Gamepad.current;
+        if (gamepad.buttonWest.wasPressedThisFrame && player.GetComponent<VikingController>().hitStun == false)
         {
             meleePrefab.SetActive(true);
             activeMelee = true;

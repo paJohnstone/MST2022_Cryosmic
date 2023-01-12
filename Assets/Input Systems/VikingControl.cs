@@ -80,6 +80,15 @@ public partial class @VikingControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""02301554-f303-40c0-82c9-b632cb47c8e3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -93,17 +102,6 @@ public partial class @VikingControl : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""da56e9a7-30ad-4e15-894e-161ad9d8309c"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
@@ -236,6 +234,17 @@ public partial class @VikingControl : IInputActionCollection2, IDisposable
                     ""action"": ""Ranged"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40ce5cc9-f8c3-4309-8e39-3ab6d8db7158"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +320,7 @@ public partial class @VikingControl : IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Melee = m_Player.FindAction("Melee", throwIfNotFound: true);
         m_Player_Ranged = m_Player.FindAction("Ranged", throwIfNotFound: true);
+        m_Player_Down = m_Player.FindAction("Down", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -376,6 +386,7 @@ public partial class @VikingControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Melee;
     private readonly InputAction m_Player_Ranged;
+    private readonly InputAction m_Player_Down;
     public struct PlayerActions
     {
         private @VikingControl m_Wrapper;
@@ -386,6 +397,7 @@ public partial class @VikingControl : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Melee => m_Wrapper.m_Player_Melee;
         public InputAction @Ranged => m_Wrapper.m_Player_Ranged;
+        public InputAction @Down => m_Wrapper.m_Player_Down;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -413,6 +425,9 @@ public partial class @VikingControl : IInputActionCollection2, IDisposable
                 @Ranged.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRanged;
                 @Ranged.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRanged;
                 @Ranged.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRanged;
+                @Down.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDown;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -435,6 +450,9 @@ public partial class @VikingControl : IInputActionCollection2, IDisposable
                 @Ranged.started += instance.OnRanged;
                 @Ranged.performed += instance.OnRanged;
                 @Ranged.canceled += instance.OnRanged;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
             }
         }
     }
@@ -492,5 +510,6 @@ public partial class @VikingControl : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnMelee(InputAction.CallbackContext context);
         void OnRanged(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
     }
 }

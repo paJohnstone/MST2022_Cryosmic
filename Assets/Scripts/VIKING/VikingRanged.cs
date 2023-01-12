@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class VikingRanged : MonoBehaviour
 {
@@ -25,10 +26,11 @@ public class VikingRanged : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var gamepad = Gamepad.current;
         meleeActive = meleeSpawner.GetComponent<VikingMelee>().activeMelee;
         if (activeRanged == false)
         {
-            if (Input.GetKeyDown(KeyCode.Z) && meleeActive == false && onlyOne == false && player.GetComponent<VikingController>().hitStun == false)
+            if (gamepad.buttonEast.wasPressedThisFrame && meleeActive == false && onlyOne == false && player.GetComponent<VikingController>().hitStun == false)
             {
 
                 ttime = 2f;
@@ -39,12 +41,13 @@ public class VikingRanged : MonoBehaviour
 
 
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        Vector2 move = gamepad.leftStick.ReadValue();
+        if ((move.x < 0))
         {
             rangedPrefab.GetComponent<RangedAttack>().left = true;
             rangedPrefab.GetComponent<RangedAttack>().right = false;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (move.x > 0)
         {
             rangedPrefab.GetComponent<RangedAttack>().left = false;
             rangedPrefab.GetComponent<RangedAttack>().right = true;
