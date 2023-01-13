@@ -262,6 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9013374813747024249}
   - component: {fileID: 9013374813747024244}
+  - component: {fileID: 100908553412915674}
   m_Layer: 0
   m_Name: ColliderSpawner
   m_TagString: Spawner2
@@ -303,6 +304,27 @@ MonoBehaviour:
   activeMelee: 0
   activeMelee2: 0
   smash: 0
+--- !u!114 &100908553412915674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013374813747024254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694c636cb83710d4bbe21be80d204ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangedAttack: {fileID: 6116603842522246032, guid: 45f6f70edc82afb41ba147133f85a845, type: 3}
+  ttime: 0
+  rangedPrefab: {fileID: 3635148674086882021, guid: 45f6f70edc82afb41ba147133f85a845, type: 3}
+  activeRanged: 0
+  speed: 2
+  meleeSpawner: {fileID: 9013374813747024254}
+  meleeActive: 0
+  onlyOne: 0
+  player: {fileID: 9013374814025313262}
 --- !u!1 &9013374814025313262
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,8 +557,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Gamepad
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

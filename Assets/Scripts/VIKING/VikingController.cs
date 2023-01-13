@@ -23,6 +23,8 @@ public class VikingController : MonoBehaviour
     private bool isInvincible;
     public Vector3 hit;
 
+    
+
     [SerializeField]
     private float invincibilityDurationSeconds;
 
@@ -41,6 +43,8 @@ public class VikingController : MonoBehaviour
 
 
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -62,7 +66,7 @@ public class VikingController : MonoBehaviour
 
 
         }
-        
+
         if (gamepad.leftShoulder.wasPressedThisFrame && isOnGround && hitStun == false && meleeSmash == false)
         {
             playerR.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
@@ -96,7 +100,10 @@ public class VikingController : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
             playerR.transform.Translate(Vector2.left * speed * move);
         }
+
+
     }
+
     void constraints()
     {
         if (left && hitStun == false && meleeActive == false && meleeSmash == false)
