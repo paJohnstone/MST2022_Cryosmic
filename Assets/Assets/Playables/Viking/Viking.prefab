@@ -262,6 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9013374813747024249}
   - component: {fileID: 9013374813747024244}
+  - component: {fileID: 467209938883441279}
   m_Layer: 0
   m_Name: ColliderSpawner
   m_TagString: Spawner2
@@ -303,6 +304,27 @@ MonoBehaviour:
   activeMelee: 0
   activeMelee2: 0
   smash: 0
+--- !u!114 &467209938883441279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013374813747024254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694c636cb83710d4bbe21be80d204ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangedAttack: {fileID: 6116603842522246032, guid: 45f6f70edc82afb41ba147133f85a845, type: 3}
+  ttime: 0
+  rangedPrefab: {fileID: 3635148674086882021, guid: 45f6f70edc82afb41ba147133f85a845, type: 3}
+  activeRanged: 0
+  speed: 2
+  meleeSpawner: {fileID: 9013374813747024254}
+  meleeActive: 0
+  onlyOne: 0
+  player: {fileID: 9013374814025313262}
 --- !u!1 &9013374814025313262
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9013374814025313253}
+  - component: {fileID: 1033951058359242702}
   - component: {fileID: 9013374814025313258}
   - component: {fileID: 9013374814025313257}
   - component: {fileID: 9013374814025313252}
@@ -343,6 +366,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1033951058359242702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013374814025313262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa7802d1ae705d4d8252b260c5874e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &9013374814025313258
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -505,7 +540,7 @@ MonoBehaviour:
   hitStunTime: 0
   meleeActive: 0
   meleeSmash: 0
-  speed: 0.0065
+  speed: 0.045
   hit: {x: 0, y: 0, z: 0}
   invincibilityDurationSeconds: 1.4
   invincibilityDeltaTime: 0.14
@@ -523,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 0f7f1fcda48dde24d8acdcb876862fb0, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -534,7 +569,47 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1033951058359242702}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3a5e3c46-20cf-40f5-afb4-3b2067bb308b
+    m_ActionName: Player/Move[/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c9406e1e-0728-456c-b27b-61547fb67271
+    m_ActionName: Player/Look[/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ed31ab62-ce8c-40ff-bc78-e8d77630b671
+    m_ActionName: Player/Jump[/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 54557308-7f5b-4d20-bb39-69cc3abdb846
+    m_ActionName: Player/Dash[/XInputControllerWindows/rightTrigger,/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b3dfeab-7390-4ff7-9973-73ba62901746
+    m_ActionName: Player/Melee[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 022827c6-14c7-4dac-841a-b391306c6419
+    m_ActionName: Player/Ranged[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 02301554-f303-40c0-82c9-b632cb47c8e3
+    m_ActionName: Player/Down[/XInputControllerWindows/leftStick/down]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player

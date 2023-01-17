@@ -31,7 +31,19 @@ public class VikingController : MonoBehaviour
 
     [SerializeField]
     private GameObject model;
+    //ian stuff
+    private CharacterController controller;
+    private Vector2 inputVector = Vector2.zero;
+    private void Awake()
+    {
+        controller = GetComponent<CharacterController>();
 
+    }
+
+    public void SetInputVector(Vector2 direction)
+    {
+        inputVector = direction;
+    }
 
     // Start is called before the first frame update
     void Start()
