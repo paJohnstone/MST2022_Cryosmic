@@ -16,8 +16,9 @@ public class SemisolidPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var gamepad = Gamepad.current;
-        if (gamepad.leftStick.down.wasPressedThisFrame)
+        //var gamepad = Gamepad.current;
+        //if (gamepad.leftStick.down.wasPressedThisFrame)
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             semiWait = 5;
             gameObject.GetComponent<PlatformEffector2D>().rotationalOffset = 180;
